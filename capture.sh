@@ -67,7 +67,7 @@ echo "---"
 echo "Creating summary - this may take several minutes"
 echo "Input is $words words, using a context window of $context tokens"
 
-json=$(jq -n --arg transcript "$transcript" --arg context "$context" '{"model": "llama3-gradient", "num_ctx": $context, "temperature": 0.1, "top-k":10, "top-p": 0.5, "stream": false, "prompt": $transcript}')
+json=$(jq -n --arg transcript "$transcript" --arg context "$context" '{"model": "llama3.1", "num_ctx": $context, "temperature": 0.1, "top-k":10, "top-p": 0.5, "stream": false, "prompt": $transcript}')
 summary=$(curl http://localhost:11434/api/generate -s -d "$json" | jq -r '.response')
 
 # Send the email using Outlook

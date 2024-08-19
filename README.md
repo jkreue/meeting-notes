@@ -15,7 +15,7 @@ If you want to change the model, be aware that the context length of most local 
 
 1. **FFmpeg**: Captures audio during meetings in a whisper.cpp accepted format. A special audio setup is required to capture both, microphone and incoming audio.
 3. **Whisper.cpp**: A C++ command-line implementation of OpenAI Whisper used for audio transcription.
-4. **Ollama (llama3_gradient)**: Summarizes the transcribed text to create meeting notes.
+4. **Ollama (llama3.1)**: Summarizes the transcribed text to create meeting notes.
 5. **jq**: Processes JSON data.
 6. **Shell Script**: Automates the entire flow.
 
@@ -106,9 +106,9 @@ https://ollama.com/download/Ollama-darwin.zip
 
 Once completed, you can download a model with:
 ```bash
-ollama pull llama3-gradient
+ollama pull llama3.1:8b
 ```
-This will download ***llama 8B gradient***. The model is a general purpose model with a context length of up to 1M ([if you happen to have >100GB RAM](https://ollama.com/library/llama3-gradient)). It is providing a fair summary and able to output HTML. If you usually have shorter calls you might want to try ***llama3:8B*** or ***gemma2:8B***, both with a context window of up to 8k, but superior output quality.
+This will download ***llama3.1:8b***. The model is a general purpose model with a context length of up to 128k (if you happen to have the required memory). It is providing a fair summary and able to output HTML.
 [Try what works best for you](https://github.com/ollama/ollama). To change the model, you will as well need to adjust the shell script ***capture.sh***. And don't forget to limit the context window or set it to 8k fixed.
 
 ### Get the shell script 
